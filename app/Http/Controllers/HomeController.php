@@ -20,7 +20,7 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::latest()->take(6)->published()->get();
-        return view('index', compact('posts'));
+        return view('datazel', compact('posts'));
     }
     public function posts()
     {
