@@ -22,6 +22,10 @@ class HomeController extends Controller
         $posts = Post::latest()->take(6)->published()->get();
         return view('datazel', compact('posts'));
     }
+    public function contact()
+    {
+        return view('pages.contact');
+    }
     public function posts()
     {
         $posts = Post::latest()->published()->paginate(10);

@@ -33,6 +33,7 @@ Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback
 
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/contact', 'HomeController@contact')->name('contact');
 Route::get('/posts', 'HomeController@posts')->name('posts');
 Route::get('/post/{slug}', 'HomeController@post')->name('post');
 Route::get('/categories', 'HomeController@categories')->name('categories');
