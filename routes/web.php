@@ -34,6 +34,7 @@ Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
+Route::post('/contact', 'HomeController@submitContactForm')->name('submitContactForm');
 Route::get('/posts', 'HomeController@posts')->name('posts');
 Route::get('/post/{slug}', 'HomeController@post')->name('post');
 Route::get('/categories', 'HomeController@categories')->name('categories');
@@ -48,6 +49,7 @@ Route::post('/like-post/{post}', 'HomeController@likePost')->name('post.like')->
 // Admin ////////////////////////////////////////////////////////////////////////
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin','verified']], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('contact', 'DashboardController@showContact')->name('showContact');
     Route::get('profile', 'DashboardController@showProfile')->name('profile');
     Route::put('profile', 'DashboardController@updateProfile')->name('profile.update');
     Route::put('profile/password', 'DashboardController@changePassword')->name('profile.password');
@@ -82,15 +84,4 @@ View::composer('layouts.frontend.partials.sidebar', function ($view) {
     $recentTags = Tag::all();
     $recentPosts = Post::latest()->take(3)->get();
     return $view->with('categories', $categories)->with('recentPosts', $recentPosts)->with('recentTags', $recentTags);
-});
-
-
-// Send Mail
-Route::get('/send', function(){
-    $post = Post::findOrFail(7);
-    // Send Mail
-    Mail::to('user@user.com')
-        ->queue(new NewPost($post));
-
-    return (new App\Mail\NewPost($post))->render();
 });

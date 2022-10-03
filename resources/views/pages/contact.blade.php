@@ -2,64 +2,69 @@
 
 @section('content')
 <div id="content" class="site-content">
-    <div class="page-header flex-middle">
-        <div class="container">
-            <div class="inner flex-middle">
-                <h1 class="page-title">Contact</h1>
-                <ul id="breadcrumbs" class="breadcrumbs none-style">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="active">Contact</li>
-                </ul>    
-            </div>
-        </div>
-    </div>
+
     <section class="contact-page">
-        <div class="container">
+        <div class="container mt-5">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="contact-left">
                         <div class="ot-heading">
-                            <span>// contact details</span>
-                            <h2 class="main-heading">Contact us</h2>
+                            {{-- <span>// contact details</span> --}}
+                            <h2 class="text-white main-heading">Contact us</h2>
                         </div>
                         <div class="space-5"></div>
                         <p>Give us a call or drop by anytime, we endeavour to answer all enquiries within 24 hours on business days. We will be happy to answer your questions.</p>
                         <div class="contact-info box-style1">
                             <i class="flaticon-world-globe"></i>                    
                             <div class="info-text">
-                                <h6>Our Address:</h6>
+                                <h6 class="text-white">Our Address:</h6>
                                 <p>411 University St, Seattle, USA</p>
                             </div>
                         </div>
                         <div class="contact-info box-style1">
                             <i class="flaticon-envelope"></i>
                             <div class="info-text">
-                                <h6>Our Mailbox:</h6>
-                                <p>engitech@mail.net</p>
+                                <h6 class="text-white">Our Mailbox:</h6>
+                                <p>dev.nasir.khan@gmail.com</p>
                             </div>
                         </div>
                         <div class="contact-info box-style1">
                             <i class="flaticon-phone-1"></i>
                             <div class="info-text">
-                                <h6>Our Phone:</h6>
-                                <p>+1 -800-456-478-23</p>
+                                <h6 class="text-white">Skype:</h6>
+                                <a href="https://join.skype.com/invite/xjWb8Q8tBkyp" target="__blank">Profile Link</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <form action="contact.php" method="post" class="wpcf7">
+                    <form action="{{route('submitContactForm')}}" method="post" class="wpcf7">
+                        @csrf
                         <div class="main-form">
                             <h2>Ready to Get Started?</h2>
                             <p class="font14">Your email address will not be published. Required fields are marked *</p>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul class="mb-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            @if(Session::has('success'))
+                                <div class="alert alert-success" role="alert">
+                                    {{Session::get('success')}}
+                                </div>
+                            @endif
                             <p>
                                 <input type="text" name="name" value="" size="40" class="" aria-required="true" aria-invalid="false" placeholder="Your Name *" required>
                             </p>
                             <p>
-                                <input type="email" name="email" value="" size="40" class="" aria-required="true" aria-invalid="false" placeholder="Your Email *" required>
+                                <input type="email" name="email" size="40" class="" value="{{$email}}" aria-required="true" aria-invalid="false" placeholder="Your Email *" required>
                             </p>
                             <p>
-                                <textarea name="message" cols="40" rows="10" class="" aria-invalid="false" placeholder="Message..." required></textarea>
+                                <textarea name="message" cols="40" rows="10" class="" minlength="10" maxlength="2000" aria-invalid="false" placeholder="Message..." required></textarea>
                             </p>
                             <p><button type="submit" class="octf-btn octf-btn-light">Send Message</button>
                             </p>

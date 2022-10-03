@@ -32,6 +32,11 @@
                 <h3 class="menu-title">CMS</h3>
                 <!-- /.menu-title -->
                 <li class="active">
+                    <a href="/admin/contact">
+                        <i class="menu-icon fa fa-user"></i>Contacts
+                    </a>
+                </li>
+                <li class="active">
                     <a href="{{route('admin.user.index')}}">
                         <i class="menu-icon fa fa-user"></i>Users
                     </a>

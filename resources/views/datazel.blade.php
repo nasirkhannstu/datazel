@@ -2,7 +2,7 @@
 
 @section('content')
 <div id="content" class="site-content">
-    <section class="top-i10">
+    <section class="">
         <div class="container">
             <div class="row">
                 <div class="col-xl-7 col-lg-12 align-self-center mb-5 mb-xl-0">
@@ -10,12 +10,12 @@
                         <h2>We build, fix, and manage websites and mobile apps</h2>
                         <p class="pr-lg-5">Have a project you would like to discuss? We're happy to learn more. Enter your email below and schedule a free consultation!</p>
                         <div class="space-20"></div>
-                        <form method="post" class="wpcf7-form init" action="newsletter.php" id="mc4wp-form-1">
+                        <form method="get" class="wpcf7-form init" action="{{route('contact')}}" id="mc4wp-form-1">
                             <div class="sub-home-10">
-                            <span class="wpcf7-form-control-wrap your-email">
-                                <input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email" aria-required="true" aria-invalid="false" placeholder="Enter your email to begin">
-                            </span>
-                            <button class="octf-btn">Get a Free Quote</button>
+                                <span class="wpcf7-form-control-wrap your-email">
+                                    <input type="email" name="email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email" aria-required="true" aria-invalid="false" placeholder="Enter your email to begin">
+                                </span>
+                                <button type="submit" class="octf-btn">Get a Free Quote</button>
                             </div>
                         </form>
                     </div>
@@ -29,49 +29,27 @@
         </div>
     </section>
 
-    <section class="client-i10 pt-0">
+    <section class="client-i10 pt-0" id="partnersBlock">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="sapce-20"></div>
                     <p class="client-text-10">⭐⭐⭐⭐⭐ rating from customers across the US & other international markets</p> <br>
-                    <div class="partners partners-i10">
-                        <div class="owl-carousel owl-theme home-10-client-carousel">
-                            <div class="partners-slide">
-                                <a href="https://easyhire.io" class="client-logo" target="_blank">
-                                    <figure class="partners-slide-inner">
-                                        <img class="partners-slide-image" src="images/EH-logo.svg" alt="">
-                                    </figure>                             
-                                </a>
-                            </div>
-                            <div class="partners-slide">
-                                <a href="https://platerate.com/" class="client-logo" target="_blank">
-                                    <figure class="partners-slide-inner">
-                                        <img class="partners-slide-image" src="images/platerate-logo.svg" alt="">
-                                    </figure>                             
-                                </a>
-                            </div>
-                            <div class="partners-slide">
-                                <a href="http://docturnalhealth.com/" class="client-logo" target="_blank">
-                                    <figure class="partners-slide-inner">
-                                        <img class="partners-slide-image" src="images/DH-logo.gif" alt="">
-                                    </figure>                             
-                                </a>
-                            </div>
-                            <div class="partners-slide">
-                                <a href="https://bulk.ly/" class="client-logo" target="_blank">
-                                    <figure class="partners-slide-inner">
-                                        <img class="partners-slide-image" src="images/bulkly-logo.png" alt="">
-                                    </figure>                             
-                                </a>
-                            </div>
-                            <div class="partners-slide">
-                                <a href="https://toursian.com/" class="client-logo">
-                                    <figure class="partners-slide-inner">
-                                        <img class="partners-slide-image" src="images/Toursian-logo.jpeg" alt="">
-                                    </figure>                             
-                                </a>
-                            </div>
+                    <div class="row justify-content-md-center">
+                        <div class="col-2 mt-3">
+                            <img class="partners-slide-image" src="images/EH-logo.svg" alt="">
+                        </div>
+                        <div class="col-2 mt-3">
+                            <img class="partners-slide-image" src="images/platerate-logo.svg" alt="">
+                        </div>
+                        <div class="col-2 mt-3">
+                            <img class="partners-slide-image" src="images/DH-logo.gif" alt="">
+                        </div>
+                        <div class="col-2 mt-3">
+                            <img class="partners-slide-image" src="images/bulkly-logo.png" alt="">
+                        </div>
+                        <div class="col-2 mt-3">
+                            <img class="partners-slide-image" src="images/Toursian-logo.jpeg" alt="">
                         </div>
                     </div>
                     <div class="space-30"></div>
@@ -79,7 +57,7 @@
             </div>
         </div>
     </section>
-    <section class="protection-i10 py-0">
+    <section class="protection-i10 py-0" id="serviceBloak">
         <div class="container">
             <hr>
             <div class="row">
@@ -129,7 +107,6 @@
                                 <div class="content-box">
                                     <h5>Mobile Development</h5>
                                     <p>Native and cross-platform apps for iOS and Android</p>
-                                    <div class="space-30"></div>
                                 </div>
                             </div>
                             <div class="space-30"></div>
@@ -155,7 +132,7 @@
         <div class="space-20"></div>
     </section>
 
-    <section class="tech-trend-i10 py-0">
+    <section class="tech-trend-i10 py-0" id="processBlock">
         <div class="container">
         <hr class="i10">
             <div class="space-60"></div>

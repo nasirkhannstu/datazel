@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Comment;
 use App\Http\Controllers\Controller;
+use App\Contact;
 use App\Post;
 use App\User;
 use Brian2694\Toastr\Facades\Toastr;
@@ -24,6 +25,11 @@ class DashboardController extends Controller
         $categories = Category::all();
         $users = User::all();
         return view('admin.index', compact('posts', 'comments', 'users', 'categories'));
+    }
+    public function showContact()
+    {
+        $contacts = Contact::orderby('id', 'desc')->paginate(20);
+        return view('admin.contact', compact('contacts'));
     }
     public function showProfile()
     {

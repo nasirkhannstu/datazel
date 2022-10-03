@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Post;
+use App\Contact;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,19 +13,33 @@ use Illuminate\Support\Facades\Session;
 class HomeController extends Controller
 {
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+    // public function index()
+    // {
+    //     $posts = Post::latest()->take(6)->published()->get();
+    //     return view('datazel', compact('posts'));
+    // }
     public function index()
     {
-        $posts = Post::latest()->take(6)->published()->get();
-        return view('datazel', compact('posts'));
+        return view('datazel');
     }
-    public function contact()
+    public function contact(Request $request)
     {
-        return view('pages.contact');
+        $email = $request->email;
+        return view('pages.contact', compact('email'));
+    }
+    public function submitContactForm(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255|min:2',
+            'email' => 'required|email',
+            'message' => 'required|string|max:1000|min:10',
+        ]);
+        $contact = new Contact;
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->message = $request->message;
+        $contact->save();
+        return redirect()->back()->with('success', 'Our team will contact you soon, Thank You.');
     }
     public function posts()
     {
